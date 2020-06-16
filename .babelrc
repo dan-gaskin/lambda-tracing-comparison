@@ -1,0 +1,15 @@
+{
+    "presets": [
+        "@babel/preset-typescript",
+        [
+            "@babel/env",
+            {
+                "targets": {
+                    "node": "10"
+                },
+                "modules": "commonjs"
+            }
+        ]
+    ],
+    "plugins": ["@babel/plugin-transform-typescript"]
+}

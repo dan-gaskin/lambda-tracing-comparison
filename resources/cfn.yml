@@ -1,0 +1,22 @@
+Resources:
+  SQSXrayTrigger:
+    Type: AWS::SQS::Queue
+
+  SQSLumigoTrigger:
+    Type: AWS::SQS::Queue
+  
+  DynamoDbTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      StreamSpecification:
+        StreamViewType: NEW_AND_OLD_IMAGES
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: function_name
+          AttributeType: S
+      KeySchema:
+        - AttributeName: function_name
+          KeyType: HASH
+
+  S3Bucket:
+    Type: AWS::S3::Bucket

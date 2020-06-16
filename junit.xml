@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="8" failures="0" time="20.596">
+  <testsuite name="ddb-stream-processor function" errors="0" failures="0" skipped="0" timestamp="2020-06-15T23:15:33" time="12.326" tests="2">
+    <testcase classname="ddb-stream-processor function should return success if all calls successful" name="ddb-stream-processor function should return success if all calls successful" time="0.033">
+    </testcase>
+    <testcase classname="ddb-stream-processor function should return s3 failure if s3 call fails" name="ddb-stream-processor function should return s3 failure if s3 call fails" time="0.013">
+    </testcase>
+  </testsuite>
+  <testsuite name="lumigo function" errors="0" failures="0" skipped="0" timestamp="2020-06-15T23:15:33" time="13.281" tests="3">
+    <testcase classname="lumigo function should return success if all calls successful" name="lumigo function should return success if all calls successful" time="0.052">
+    </testcase>
+    <testcase classname="lumigo function should return http failure if http call not 200" name="lumigo function should return http failure if http call not 200" time="0.007">
+    </testcase>
+    <testcase classname="lumigo function should return http failure if dynamodb call fails" name="lumigo function should return http failure if dynamodb call fails" time="0.007">
+    </testcase>
+  </testsuite>
+  <testsuite name="aws-xray function" errors="0" failures="0" skipped="0" timestamp="2020-06-15T23:15:33" time="13.366" tests="3">
+    <testcase classname="aws-xray function should return success if all calls successful" name="aws-xray function should return success if all calls successful" time="0.056">
+    </testcase>
+    <testcase classname="aws-xray function should return http failure if http call not 200" name="aws-xray function should return http failure if http call not 200" time="0.009">
+    </testcase>
+    <testcase classname="aws-xray function should return http failure if dynamodb call fails" name="aws-xray function should return http failure if dynamodb call fails" time="0.007">
+    </testcase>
+  </testsuite>
+</testsuites>

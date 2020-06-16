@@ -1,0 +1,36 @@
+{
+  "typeAcquisition": {
+    "include": [
+      "jest",
+      "node"
+    ]
+  },
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "moduleResolution": "node",
+    "lib": ["ES2018"],
+    "baseUrl": "./",
+    "types": [
+      "node",
+      "jest"
+    ],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "esModuleInterop": true,
+    "inlineSourceMap": true,
+    "resolveJsonModule": true
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "!node_modules/@types"
+  ],
+  "quotemark": [
+    true,
+    "single"
+  ]
+}
