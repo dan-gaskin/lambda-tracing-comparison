@@ -26,7 +26,7 @@ provider:
 
 custom:
   lumigo:
-    token: "t_3af0cb0728f04c1097ea9"
+    token: "${ssm:/lumigo/token}"
     nodePackageManager: npm
 
 package:

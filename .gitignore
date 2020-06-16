@@ -9,3 +9,5 @@ node_modules
 
 # output dir
 output
+
+junit.xml
