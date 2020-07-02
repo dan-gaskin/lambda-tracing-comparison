@@ -1,7 +1,7 @@
 import {handler} from '../../../src/functions/aws-xray';
 import request from 'request-promise-native';
-const AWSMock = require('aws-sdk-mock');
 import AWS from 'aws-sdk';
+const AWSMock = require('aws-sdk-mock');
 AWSMock.setSDKInstance(AWS);
 
 describe('aws-xray function', () => {
@@ -29,13 +29,13 @@ describe('aws-xray function', () => {
                 "statusCode": 503
             }
         );
-        AWSMock.mock('DynamoDB.DocumentClient', 'put', function(params, callback) {
-            callback(() => {throw new Error()}, null)
-        })
-        const result = await handler()
-        expect(result).toBe('http failure')
+        try { 
+            await handler()
+        } catch (result) {
+            expect(result).toStrictEqual(new Error('HttpService.get: 503'))
+        }
     })
-    it('should return http failure if dynamodb call fails', async () => {
+    it('should return dynamo failure if dynamodb call fails', async () => {
         jest.spyOn(request, 'get').mockReturnValueOnce(
             {
                 "statusCode": 200,
@@ -45,9 +45,12 @@ describe('aws-xray function', () => {
             }
         );
         AWSMock.mock('DynamoDB.DocumentClient', 'put', function(params, callback) {
-            callback(() => {throw new Error()}, null)
+            callback('Error', null)
         })
-        const result = await handler()
-        expect(result).toBe('ddb failure')
+        try { 
+            await handler()
+        } catch (result) {
+            expect(result).toStrictEqual(new Error('DynamoService.putItem: Error'))
+        }
     })
 })

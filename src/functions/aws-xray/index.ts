@@ -6,15 +6,8 @@ export default class Xray {
     public async worker() {
         console.log('Xray.worker starts')
         const payload = await new HttpService().get();
-        if (!payload) {
-            return 'http failure'
-        };
-        const dDbRes = await new DynamoService().putItem('xray', payload);
+        await new DynamoService().putItem('xray', payload);
         console.log('Xray.worker completes')
-        console.log(dDbRes)
-        if (!dDbRes) {
-            return 'ddb failure';
-        };
         return 'success';
     }
 }
@@ -22,7 +15,7 @@ export default class Xray {
 exports.handler = async (event, context) => {
     console.log('incoming event: ', event)
     console.log('handler starts')
-    const res = await new Xray().worker();
+    const response = await new Xray().worker();
     console.log('handler completes')
-    return res;
+    return response;
 };

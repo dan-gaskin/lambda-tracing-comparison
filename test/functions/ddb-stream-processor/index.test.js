@@ -14,8 +14,11 @@ describe('ddb-stream-processor function', () => {
         expect(result).toBe('success');
     })
     it('should return s3 failure if s3 call fails', async () => {
-        sinon.stub(S3Service.prototype, "upload").returns(null);
-        const result = await handler();
-        expect(result).toBe('s3 failure');
+        sinon.stub(S3Service.prototype, "upload").throws(new Error('s3 error'))
+        try {
+            await handler();
+        } catch (result) {
+            expect(result).toStrictEqual(new Error('s3 error'));
+        }
     })
 })

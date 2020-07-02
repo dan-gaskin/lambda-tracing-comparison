@@ -64,3 +64,4 @@ functions:
 
 resources:
   - ${file(resources/cfn.yml)}
+  

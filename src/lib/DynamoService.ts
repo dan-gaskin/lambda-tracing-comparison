@@ -20,8 +20,8 @@ export default class DynamoService {
                 }).promise();
             console.log('DynamoService.putItem completes')
             return result;
-        } catch {
-            return null;
+        } catch (err) {
+            throw new Error(`DynamoService.putItem: ${err}`)
         }
     }
 }

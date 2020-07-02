@@ -15,11 +15,10 @@ export default class S3Service {
                     Key: s3Key,
                     Body: JSON.stringify(res)
                 }).promise();
-            console.log('S3Service.upload completes')
+            console.log('S3Service.upload completes');
             return result;
-        } catch {
-            console.log('S3Service.upload error')
-            return null;
+        } catch (err) {
+            throw new Error(`Error: S3Service.upload: ${err}`);
         }
     }
 }

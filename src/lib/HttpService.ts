@@ -13,7 +13,7 @@ export default class HttpService {
         if (response.statusCode === 200) {
             return response.body;
         } else {
-            return null;
+            throw new Error(`HttpService.get: ${response.statusCode}`)
         }
     }
 }
