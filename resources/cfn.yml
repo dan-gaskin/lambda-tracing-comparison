@@ -20,3 +20,15 @@ Resources:
 
   S3Bucket:
     Type: AWS::S3::Bucket
+
+Outputs:
+  SQSXrayTriggerArn: 
+    Value: 
+      Fn::GetAtt: 
+        - "SQSXrayTrigger"
+        - "Arn"
+  SQSLumigoTriggerArn: 
+    Value: 
+      Fn::GetAtt: 
+        - "SQSLumigoTrigger"
+        - "Arn"
