@@ -5,7 +5,14 @@ This repo currently supports
  - lumigo (src/functions/lumigo)
 
  ### Tech stack
-Serverless Framework for packaging and deployment
-NodeJs Typescript code
+Packaging and Deployment - Serverless Framework
+Function Code - NodeJs Typescript
+Unit Tests - Jest
 
 ### Deployment
+Have an AWS credential provider set up in your CLI
+Run `sls deploy`
+
+### Trigger functions
+Run send-sqs.sh with first input being the number of messages e.g. the following will send 100 messages to the sqs queues
+`./send-sqs.sh 100`
