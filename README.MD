@@ -1,5 +1,5 @@
 # Lambda-Tracing-Comparison
-This repo is designed to compare tracing tools for lambda functions.
+This repo is designed to compare tracing tools for lambda functions.\
 This repo currently supports
  * aws-xray (src/functions/aws-xray)
  * lumigo (src/functions/lumigo)
@@ -7,7 +7,7 @@ This repo currently supports
  ### Tech stack
 Packaging and Deployment - Serverless Framework\
 Function Code - NodeJs Typescript\
-Unit Tests - Jest\
+Unit Tests - Jest
 
 ### Deployment
 Have an AWS credential provider set up in your CLI\
