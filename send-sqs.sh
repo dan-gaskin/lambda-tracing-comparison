@@ -3,15 +3,19 @@ STACK_NAME=$(sls info | grep stack | sed 's/[^ ]* //')
 printf "stack name resolved as ${STACK_NAME}\n"
 
 SQS_XRAY=$(aws cloudformation describe-stack-resources --stack-name ${STACK_NAME} --query 'StackResources[?LogicalResourceId==`SQSXrayTrigger`].PhysicalResourceId' --output text)
-printf "xray sqs arn resolved as ${SQS_XRAY}\n"
+printf "xray sqs endpoint resolved as ${SQS_XRAY}\n"
 
 SQS_LUMIGO=$(aws cloudformation describe-stack-resources --stack-name ${STACK_NAME} --query 'StackResources[?LogicalResourceId==`SQSLumigoTrigger`].PhysicalResourceId' --output text)
-printf "lumigo sqs arn resolved as ${SQS_LUMIGO}\n"
+printf "lumigo sqs endpoint resolved as ${SQS_LUMIGO}\n"
+
+printf "sqs send-message starting\n"
 
 for ((i=1;i<=$1;i++)); 
 do 
-    printf "\nsending message ${i} to sqs triggers\n"
-    aws sqs send-message --queue-url ${SQS_LUMIGO} --message-body hi
-    aws sqs send-message --queue-url ${SQS_XRAY} --message-body hi
-    printf "\n"
+    aws sqs send-message --queue-url ${SQS_LUMIGO} --message-body hi &>/dev/null
+    printf "Message ${i} delivered to ${SQS_LUMIGO}\n"
+    aws sqs send-message --queue-url ${SQS_XRAY} --message-body hi &>/dev/null
+    printf "Message ${i} delivered to ${SQS_XRAY}\n"
 done
+
+printf "sqs send-message complete\n"
