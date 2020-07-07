@@ -16,6 +16,9 @@ do
     printf "Message ${i} delivered to ${SQS_LUMIGO}\n"
     aws sqs send-message --queue-url ${SQS_XRAY} --message-body hi &>/dev/null
     printf "Message ${i} delivered to ${SQS_XRAY}\n"
+    if ! (( $i % 10 )); then
+       sleep 30
+    fi
 done
 
 printf "sqs send-message complete\n"
