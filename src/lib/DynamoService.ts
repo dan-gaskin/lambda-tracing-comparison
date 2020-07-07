@@ -18,10 +18,10 @@ export default class DynamoService {
                         timestamp: Date.now()
                     }
                 }).promise();
-            console.log('DynamoService.putItem completes')
+            console.log('DynamoService.putItem completes');
             return result;
         } catch (err) {
-            throw new Error(`DynamoService.putItem: ${err}`)
+            throw new Error(`DynamoService.putItem: ${err}`);
         }
     }
 }

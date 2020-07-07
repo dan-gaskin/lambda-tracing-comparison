@@ -9,11 +9,11 @@ export default class HttpService {
             strictSSL: false
         });
         const response = await request.get(process.env.requestGetUrl);
-        console.log('HttpService.get completes')
+        console.log('HttpService.get completes');
         if (response.statusCode === 200) {
             return response.body;
         } else {
-            throw new Error(`HttpService.get: ${response.statusCode}`)
+            throw new Error(`HttpService.get: ${response.statusCode}`);
         }
     }
 }

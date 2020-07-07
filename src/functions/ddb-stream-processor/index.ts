@@ -1,4 +1,5 @@
 import S3Service from '../../lib/S3Service';
+import awsXray from '../../lib/XrayService';
 
 export default class Processor {
     public async worker() {
@@ -11,7 +12,7 @@ export default class Processor {
 
 exports.handler = async (event, context) => {
     console.log('incoming event', event);
-    console.log('handler starts');
+    console.log('handler starts, tracing enabled ', awsXray);
     const response = await new Processor().worker();
     console.log('handler completes');
     return response;
