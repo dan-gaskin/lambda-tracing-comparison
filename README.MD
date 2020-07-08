@@ -9,6 +9,11 @@ Packaging and Deployment - Serverless Framework\
 Function Code - NodeJs Typescript\
 Unit Tests - Jest
 
+### Pre Reqs
+Deploy the Lumigo cloudformation stack
+Have your Lumigo token saved in an ssm parameter named /lumigo/token
+Deploy the Dashbird stack
+
 ### Stack Deployment
 Have an AWS credential provider set up in your CLI\
 Run `sls deploy`
